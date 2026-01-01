@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="container">
+    <h2>🎤 Audio Detector</h2>
+    <button id="startBtn">Start Capture</button>
+    <button id="stopBtn" disabled>Stop Capture</button>
+    <div id="status">Ready to capture audio</div>
+    <div id="result"></div>
+  </div>
+  <style>
+      body {
+        width: 350px;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      
+      .container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      }
+      
+      h2 {
+        margin: 0 0 20px 0;
+        font-size: 22px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+      
+      button {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      #startBtn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.4);
+      }
+      
+      #startBtn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.6);
+      }
+      
+      #stopBtn {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        box-shadow: 0 4px 15px 0 rgba(245, 87, 108, 0.4);
+      }
+      
+      #stopBtn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px 0 rgba(245, 87, 108, 0.6);
+      }
+      
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      #status {
+        margin-top: 15px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 500;
+        min-height: 20px;
+        backdrop-filter: blur(5px);
+      }
+      
+      #result {
+        margin-top: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        border-left: 4px solid #4ade80;
+        backdrop-filter: blur(5px);
+        display: none;
+      }
+      
+      #result.show {
+        display: block;
+        animation: slideIn 0.3s ease;
+      }
+      
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .result-label {
+        font-weight: 600;
+        font-size: 13px;
+        opacity: 0.9;
+        margin-bottom: 5px;
+      }
+      
+      .result-value {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .confidence {
+        font-size: 14px;
+        opacity: 0.95;
+      }
+      
+      .recording-indicator {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #ef4444;
+        border-radius: 50%;
+        margin-right: 8px;
+        animation: pulse 1.5s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+</style>
+  <script src="popup.js"></script>
+</body>
+</html>
