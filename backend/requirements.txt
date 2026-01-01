@@ -6,3 +6,4 @@ librosa
 numpy
 pydub
 protobuf
+python-multipart
