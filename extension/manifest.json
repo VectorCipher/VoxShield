@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3, 
+  "name": "Audio Deepfake Detector",
+  "version": "1.0.0",
+  "description": "Capture tab audio and detect deepfakes",
+  "permissions": [
+    "tabCapture",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+  
+}
